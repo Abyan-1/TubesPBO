@@ -2,7 +2,6 @@ from model import Transaksi
 import database
 
 class ManajerTransaksi:
-    class ManajerTransaksi:
     def __init__(self):
         from database import get_connection
         conn = get_connection()
