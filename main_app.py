@@ -38,7 +38,7 @@ elif menu == "Riwayat":
 
         df = pd.DataFrame(data_dict)
         df = df[["ID", "tanggal", "kategori", "deskripsi", "jumlah"]]  # urutkan kolom agar ID di awal
-        df = df.rename(columns={"tanggal": "Tanggal", "kategori": "Kategori", "deskripsi": "Deskripsi", "jumlah": "Jumlah (Rp)"})
+        df = df.rename(columns={"tanggal": "Tanggal", "kategori": "Kategori", "deskripsi": "Deskripsi", "jumlah": "Jumlah (Euro)"})
 
         st.dataframe(df, use_container_width=True)
 
@@ -54,7 +54,7 @@ elif menu == "Riwayat":
 elif menu == "Ringkasan":
     st.header("Ringkasan")
     total = manager.total_pemasukan()
-    st.metric("Total Dana Masuk", f"Rp {total:,.0f}")
+    st.metric("Total Dana Masuk", f"Euro {total:,.0f}")
     perkat = manager.per_kategori()
     if perkat:
         df_kat = pd.DataFrame({
