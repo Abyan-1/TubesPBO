@@ -18,6 +18,15 @@ class ManajerTransaksi:
         conn.commit()
         conn.close()
 
+    def tambah_transaksi(self, transaksi: Transaksi):
+    sql = "INSERT INTO transaksi (deskripsi, jumlah, kategori, tanggal) VALUES (?, ?, ?, ?)"
+    return database.execute_query(sql, (
+        transaksi.deskripsi,
+        transaksi.jumlah,
+        transaksi.kategori,
+        transaksi.tanggal.strftime("%Y-%m-%d")
+    ))
+    
     def ambil_semua(self):
         rows = database.fetch_query("SELECT * FROM transaksi ORDER BY tanggal DESC")
         return [Transaksi(*row[1:], id_transaksi=row[0]) for row in rows]
